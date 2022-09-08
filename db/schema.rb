@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_08_143658) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_08_144116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,4 +26,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_143658) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks_desired_features", force: :cascade do |t|
+    t.bigint "feedback_id", null: false
+    t.bigint "desired_feature_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["desired_feature_id"], name: "index_feedbacks_desired_features_on_desired_feature_id"
+    t.index ["feedback_id"], name: "index_feedbacks_desired_features_on_feedback_id"
+  end
+
+  add_foreign_key "feedbacks_desired_features", "desired_features"
+  add_foreign_key "feedbacks_desired_features", "feedbacks"
 end

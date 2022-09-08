@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :desired_features
   resources :feedbacks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

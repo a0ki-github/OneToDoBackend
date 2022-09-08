@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Desired features</h1>
+
+<div id="desired_features">
+  <% @desired_features.each do |desired_feature| %>
+    <%= render desired_feature %>
+    <p>
+      <%= link_to "Show this desired feature", desired_feature %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New desired feature", new_desired_feature_path %>

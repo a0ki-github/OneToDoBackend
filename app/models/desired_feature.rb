@@ -1,0 +1,2 @@
+class DesiredFeature < ApplicationRecord
+end

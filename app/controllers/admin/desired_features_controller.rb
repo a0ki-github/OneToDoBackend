@@ -1,4 +1,4 @@
-class DesiredFeaturesController < ApplicationController
+class Admin::DesiredFeaturesController < ApplicationController
   before_action :set_desired_feature, only: %i[ show edit update destroy ]
 
   # GET /desired_features or /desired_features.json
@@ -25,8 +25,8 @@ class DesiredFeaturesController < ApplicationController
 
     respond_to do |format|
       if @desired_feature.save
-        format.html { redirect_to desired_feature_url(@desired_feature), notice: "Desired feature was successfully created." }
-        format.json { render :show, status: :created, location: @desired_feature }
+        format.html { redirect_to admin_desired_feature_url(@desired_feature), notice: "Desired feature was successfully created." }
+        format.json { render :show, status: :created, location: [:admin, @desired_feature] }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @desired_feature.errors, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class DesiredFeaturesController < ApplicationController
   def update
     respond_to do |format|
       if @desired_feature.update(desired_feature_params)
-        format.html { redirect_to desired_feature_url(@desired_feature), notice: "Desired feature was successfully updated." }
+        format.html { redirect_to admin_desired_feature_url(@desired_feature), notice: "Desired feature was successfully updated." }
         format.json { render :show, status: :ok, location: @desired_feature }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class DesiredFeaturesController < ApplicationController
     @desired_feature.destroy
 
     respond_to do |format|
-      format.html { redirect_to desired_features_url, notice: "Desired feature was successfully destroyed." }
+      format.html { redirect_to admin_desired_features_url, notice: "Desired feature was successfully destroyed." }
       format.json { head :no_content }
     end
   end

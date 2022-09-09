@@ -1,4 +1,4 @@
-class FeedbacksController < ApplicationController
+class Admin::FeedbacksController < ApplicationController
   before_action :set_feedback, only: %i[ show edit update destroy ]
 
   # GET /feedbacks or /feedbacks.json
@@ -25,8 +25,8 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully created." }
-        format.json { render :show, status: :created, location: @feedback }
+        format.html { redirect_to admin_feedback_url(@feedback), notice: "Feedback was successfully created." }
+        format.json { render :show, status: :created, location: [:admin, @feedback] }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
@@ -38,8 +38,8 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully updated." }
-        format.json { render :show, status: :ok, location: @feedback }
+        format.html { redirect_to admin_feedback_url(@feedback), notice: "Feedback was successfully updated." }
+        format.json { render :show, status: :ok, location: [:admin, @feedback] }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class FeedbacksController < ApplicationController
     @feedback.destroy
 
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: "Feedback was successfully destroyed." }
+      format.html { redirect_to admin_feedbacks_url, notice: "Feedback was successfully destroyed." }
       format.json { head :no_content }
     end
   end

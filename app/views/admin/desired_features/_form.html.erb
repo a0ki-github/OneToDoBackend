@@ -1,4 +1,4 @@
-<%= form_with(model: desired_feature) do |form| %>
+<%= form_for([:admin, @desired_feature]) do |form| %>
   <% if desired_feature.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(desired_feature.errors.count, "error") %> prohibited this desired_feature from being saved:</h2>

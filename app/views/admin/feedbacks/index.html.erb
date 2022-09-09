@@ -6,9 +6,9 @@
   <% @feedbacks.each do |feedback| %>
     <%= render feedback %>
     <p>
-      <%= link_to "Show this feedback", feedback %>
+      <%= link_to "Show this feedback", [:admin, feedback] %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New feedback", new_feedback_path %>
+<%= link_to "New feedback", new_admin_feedback_path %>

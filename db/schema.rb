@@ -20,21 +20,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_144116) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "desired_features_feedbacks", id: false, force: :cascade do |t|
+    t.bigint "desired_feature_id", null: false
+    t.bigint "feedback_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["desired_feature_id"], name: "index_desired_features_feedbacks_on_desired_feature_id"
+    t.index ["feedback_id"], name: "index_desired_features_feedbacks_on_feedback_id"
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "feedbacks_desired_features", id: false, force: :cascade do |t|
-    t.bigint "feedback_id", null: false
-    t.bigint "desired_feature_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["desired_feature_id"], name: "index_feedbacks_desired_features_on_desired_feature_id"
-    t.index ["feedback_id"], name: "index_feedbacks_desired_features_on_feedback_id"
-  end
-
-  add_foreign_key "feedbacks_desired_features", "desired_features"
-  add_foreign_key "feedbacks_desired_features", "feedbacks"
+  add_foreign_key "desired_features_feedbacks", "desired_features"
+  add_foreign_key "desired_features_feedbacks", "feedbacks"
 end

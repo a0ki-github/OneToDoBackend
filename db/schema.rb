@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_144116) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feedbacks_desired_features", force: :cascade do |t|
+  create_table "feedbacks_desired_features", id: false, force: :cascade do |t|
     t.bigint "feedback_id", null: false
     t.bigint "desired_feature_id", null: false
     t.datetime "created_at", null: false

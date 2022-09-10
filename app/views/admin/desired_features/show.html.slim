@@ -1,0 +1,8 @@
+p[style="color: green"]
+  = notice
+= render @desired_feature
+div
+  = link_to "Edit this desired feature", edit_admin_desired_feature_path(@desired_feature)
+  |  | 
+  = link_to "Back to desired features", admin_desired_features_path
+  = button_to "Destroy this desired feature", [:admin, @desired_feature], method: :delete

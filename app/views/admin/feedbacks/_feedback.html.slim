@@ -5,3 +5,9 @@ p
   strong
     | Description:
   = feedback.description
+p
+  strong
+    | DesiredFeatures:
+  - feedback.desired_features.each do |desired_feature|
+    p
+      = desired_feature.name

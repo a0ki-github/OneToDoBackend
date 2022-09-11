@@ -12,4 +12,9 @@
     = form.label :description, style: "display: block"
     = form.text_area :description
   div
+    = form.label :desired_feature_ids, '要望機能'
+    = form.collection_check_boxes :desired_feature_ids, DesiredFeature.all, :id, :name do |desired_feature|
+      br
+      = desired_feature.label { desired_feature.check_box + desired_feature.text }
+  div
     = form.submit

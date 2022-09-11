@@ -65,6 +65,6 @@ class Admin::FeedbacksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def feedback_params
-      params.require(:feedback).permit(:description)
+      params.require(:feedback).permit(:description, desired_feature_ids: [])
     end
 end
